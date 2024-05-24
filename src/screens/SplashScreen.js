@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: width * 0.9,
     height: width * 0.9 * 0.7, // Increased aspect ratio
-    borderRadius: 20,
+    borderRadius: 150,
     overflow: 'hidden',
     shadowColor: '#fff',
     shadowOffset: { width: 0, height: 10 },
