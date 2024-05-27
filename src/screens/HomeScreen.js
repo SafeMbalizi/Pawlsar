@@ -1,20 +1,23 @@
-// src/screens/HomeScreen.js
+// src/screens/FeedScreen.js
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
+  const posts = [
+    { id: '1', content: 'This is the first post!' },
+    { id: '2', content: 'This is the second post!' },
+  ];
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Pawlsar!</Text>
-      <Text style={styles.subtitle}>This is the home screen.</Text>
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('Profile')}
-      />
-      <Button
-        title="Log Out"
-        onPress={() => navigation.navigate('Login')}
-        color="#CC950F"
+      <FlatList
+        data={posts}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.post}>
+            <Text>{item.content}</Text>
+          </View>
+        )}
       />
     </View>
   );
@@ -23,22 +26,12 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
+    padding: 16,
   },
-  title: {
-    fontSize: 24,
-    color: '#CC950F',
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 18,
-    color: 'white',
-    marginBottom: 20,
-    textAlign: 'center',
+  post: {
+    padding: 16,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
   },
 });
 
